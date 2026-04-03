@@ -3,452 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Stratégie Délibérée & Émergente | Synthèse Barney & Hesterly</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>MAN301P | Stratégie Délibérée & Émergente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f0f4f8;
-            scroll-behavior: smooth;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-        }
-
-        /* Container des slides */
-        .slides-container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        /* Style de chaque slide */
-        .slide {
-            min-height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 4rem;
-            background: #ffffff;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: background 0.2s;
-        }
-
-        /* Alternance subtile de fond pour lisibilité */
-        .slide:nth-child(odd) {
-            background: #ffffff;
-        }
-        .slide:nth-child(even) {
-            background: #fafcff;
-        }
-
-        /* Conteneur interne pour le contenu */
-        .slide-content {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        /* Typographie */
-        h1 {
-            font-size: 3.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1E3C72, #2A5298);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: 2.4rem;
-            font-weight: 600;
-            color: #0A2B4E;
-            border-left: 6px solid #2A6F97;
-            padding-left: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
-        }
-
-        h3 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #1E4A76;
-            margin: 1rem 0 0.75rem 0;
-        }
-
-        .subhead {
-            font-size: 1.2rem;
-            color: #2c5282;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #e2e8f0;
-            display: inline-block;
-            padding-bottom: 0.3rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .highlight {
-            background: #EFF6FF;
-            padding: 1rem 1.5rem;
-            border-left: 4px solid #2A6F97;
-            border-radius: 12px;
-            margin: 1.2rem 0;
-            font-weight: 500;
-        }
-
-        .grid-2 {
-            display: flex;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: #F8FAFE;
-            border-radius: 24px;
-            padding: 1.6rem;
-            flex: 1;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            border: 1px solid #eef2f9;
-        }
-        .card i {
-            font-size: 2rem;
-            color: #2A6F97;
-            margin-bottom: 0.8rem;
-        }
-
-        .pill {
-            background: #E9F0F9;
-            color: #1E4A76;
-            border-radius: 40px;
-            padding: 0.2rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 0.8rem;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #2d3e50;
-            background: #F1F5F9;
-            padding: 1rem 2rem;
-            border-radius: 28px;
-            margin: 1.2rem 0;
-            border-left: 5px solid #4f9da6;
-        }
-
-        footer.page-footer {
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #6c7a8e;
-            text-align: center;
-            border-top: 1px solid #e2edf7;
-            padding-top: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .slide {
-                padding: 2rem 1.5rem;
-            }
-            h1 {
-                font-size: 2.4rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .grid-2 {
-                flex-direction: column;
-            }
-        }
-        /* Indicateur de progression */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1E3C72, #4f9da6);
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.1s;
-        }
-        .slide-number {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            z-index: 1000;
-            pointer-events: none;
-            font-family: monospace;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f0f4f8; scroll-behavior: smooth; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        .slides-container { display: flex; flex-direction: column; width: 100%; }
+        .slide { min-height: 100vh; width: 100%; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 3rem 10%; background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative; }
+        .slide:nth-child(even) { background: #fafcff; }
+        .slide-content { max-width: 1000px; width: 100%; }
+        h1 { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #1E3C72, #2A5298); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
+        h2 { font-size: 2.2rem; color: #0A2B4E; border-left: 6px solid #2A6F97; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.4rem; color: #2A6F97; margin-bottom: 1rem; font-weight: 600; }
+        p { font-size: 1.15rem; line-height: 1.6; color: #334155; margin-bottom: 1rem; }
+        ul { margin-left: 2rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; font-size: 1.1rem; color: #334155; }
+        .pill { background: #E9F0F9; color: #1E4A76; border-radius: 40px; padding: 0.4rem 1.2rem; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .highlight { background: #f1f5f9; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #2A6F97; margin: 1.5rem 0; }
+        .quote { font-style: italic; font-size: 1.2rem; padding: 1.5rem; color: #475569; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; text-align: center; margin: 2rem 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 6px; background: #2A6F97; width: 0%; z-index: 1000; transition: width 0.3s; }
+        .slide-number { position: absolute; bottom: 2rem; right: 2rem; font-size: 0.9rem; color: #94a3b8; font-weight: 600; }
     </style>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-number" id="slideCounter"></div>
-<div class="slides-container" id="slidesContainer">
-    <!-- Slide 1 : Titre principal -->
+
+<div class="slides-container">
     <div class="slide">
         <div class="slide-content">
-            <div class="pill">Dissertation MAN301P - Yacine Najimi</div>
+            <div class="pill">MAN301P - Stratégie de l'Entreprise</div>
             <h1>Stratégie Délibérée & Stratégie Émergente</h1>
-            <p style="font-size: 1.3rem; margin-top: 1rem;">Dialectique et fondements dans l’ouvrage<br><strong>“Strategic Management and Competitive Advantage”</strong><br>Barney & Hesterly (Global Edition)</p>
-            <div class="highlight">
-                <i class="fas fa-chalkboard-teacher"></i>  Présentation académique : lien entre la dissertation et le cadre théorique de Barney & Hesterly.
-            </div>
-            <footer class="page-footer">MAN301P – Stratégie de l’Entreprise | Professeur Y. Errami | Yacine Najimi</footer>
+            <p>Sujet n°18 : La dialectique entre intention et adaptation dans les organisations contemporaines.</p>
+            <div class="highlight"><strong>Yacine NAJIMI</strong><br>UM6P - FGSES | Avril 2026</div>
+            <div class="slide-number">01 / 20</div>
         </div>
     </div>
 
-    <!-- Slide 2 : Présentation de l’ouvrage de Barney & Hesterly -->
     <div class="slide">
         <div class="slide-content">
-            <h2>Strategic Management and Competitive Advantage</h2>
-            <p><strong>Jay B. Barney & William S. Hesterly (Global Edition)</strong> – Ouvrage de référence en management stratégique. Structure autour du <strong>VRIO framework</strong>, de l’analyse interne/externe et des mécanismes d’avantage concurrentiel durable.</p>
-            <div class="grid-2">
-                <div class="card"><i class="fas fa-chart-line"></i><h3>Concepts clés</h3><p>Modèle I/O (Porter) & vue basée sur les ressources (RBV). Analyse SWOT, chaîne de valeur, stratégies corporate/business.</p></div>
-                <div class="card"><i class="fas fa-brain"></i><h3>Partie centrale</h3><p>Chapitres sur <strong>l’implémentation stratégique</strong> et la <strong>création de valeur</strong>. La question du lien entre formulation (délibérée) et adaptation (émergente) y est sous-jacente.</p></div>
+            <h2>L'Incertitude comme Postulat</h2>
+            <p>Dans un monde BANI (Brittle, Anxious, Non-linear, Incomprehensible), la planification classique est bousculée.</p>
+            <div class="grid">
+                <div class="card"><h3>Vision Classique</h3><p>La stratégie comme "Plan" (Design School). Omniscience des dirigeants.</p></div>
+                <div class="card"><h3>Réalité Terrain</h3><p>La stratégie comme "Processus". Apprentissage par l'erreur.</p></div>
             </div>
-            <p>Bien que l’accent porte sur l’avantage concurrentiel, l’ouvrage aborde la tension entre planification intentionnelle et processus d’apprentissage organisationnel – cœur du sujet n°18.</p>
+            <div class="slide-number">02 / 20</div>
         </div>
     </div>
 
-    <!-- Slide 3 : Où se situe le thème délibéré/émergent dans Barney & Hesterly ? -->
     <div class="slide">
         <div class="slide-content">
-            <h2>Localisation dans l’ouvrage : chapitres clés</h2>
-            <p>Le principe de <strong>stratégie délibérée et émergente</strong> n’est pas un chapitre dédié mais irrigue plusieurs sections :</p>
-            <ul style="margin-left: 1.8rem; line-height: 1.7; font-size: 1.05rem;">
-                <li><strong>Chapitre 1</strong> : “What is Strategy?” – Distinction stratégie formulée (intention) vs stratégie réalisée (pattern). Les auteurs citent Mintzberg en référence.</li>
-                <li><strong>Chapitre 10</strong> : “Strategic Control and Corporate Governance” – mécanismes de contrôle délibéré et émergence des initiatives.</li>
-                <li><strong>Chapitre 12</strong> : “Implementing Strategy” – organisation, routines et adaptation locale (post-it 3M / Netflix indirectement).</li>
-                <li><strong>Cas intégrateurs</strong> : Walmart, IKEA, etc. – analyse des plans délibérés et ajustements stratégiques.</li>
+            <h2>Définition : Stratégie Délibérée</h2>
+            <div class="highlight">"Une conception consciente, rationnelle et intentionnelle formulée par le sommet hiérarchique."</div>
+            <ul>
+                <li>Analyse préalable (PESTEL, SWOT, 5 Forces).</li>
+                <li>Allocation rigoureuse des ressources (Modèle VRIO de Barney).</li>
+                <li>Objectif : Contrôle total de la trajectoire organisationnelle.</li>
             </ul>
-            <div class="quote"><i class="fas fa-quote-left"></i> Barney & Hesterly soulignent que “la stratégie n’est pas seulement un plan, mais un pattern d’actions cohérent” – rejoignant Mintzberg.</div>
+            <div class="slide-number">03 / 20</div>
         </div>
     </div>
 
-    <!-- Slide 4 : Stratégie délibérée : Fondements théoriques dans l’ouvrage -->
     <div class="slide">
         <div class="slide-content">
-            <h2>Stratégie Délibérée (Barney & Hesterly)</h2>
-            <p>Dans la <strong>Partie 1 (ch.1-3)</strong> : le processus stratégique classique – <strong>analyse externe (PESTEL, 5 forces) et interne (VRIO)</strong> – illustre une approche planifiée où les dirigeants formulent une intention avant l’action. Le modèle <strong>“positionnement stratégique”</strong> (Porter) est présenté comme un acte délibéré de choix de marché.</p>
-            <div class="highlight"><i class="fas fa-chart-simple"></i>  Exemple IKEA (évoqué dans l’ouvrage au chapitre 3 & cas final) : intégration verticale délibérée, standardisation globale, fruit d’une vision planifiée. Conformément au “Testament d’un marchand de meubles”.</div>
-            <p>Barney & Hesterly montrent que la cohérence délibérée crée un avantage si l’environnement est prévisible et les ressources rares.</p>
-        </div>
-    </div>
-
-    <!-- Slide 5 : Limites de l’approche délibérée selon les auteurs -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Risques de rigidité & « stratégies non réalisées »</h2>
-            <p>Barney & Hesterly intègrent la critique de Mintzberg dans le chapitre “Strategic Implementation”. Les plans formels peuvent échouer face aux chocs exogènes.</p>
-            <div class="grid-2">
-                <div class="card"><i class="fas fa-skull"></i><h3>Exemple Blockbuster</h3><p>Stratégie délibérée basée sur le réseau physique, refus d’adaptation face à Netflix (stratégie émergente du streaming). Blocage d’une planification trop rigide.</p></div>
-                <div class="card"><i class="fas fa-chart-line"></i><h3>Mécanisme de contrôle</h3><p>Les auteurs insistent sur l’importance des systèmes de contrôle pour ajuster le cap : feedback loop, qui fait le pont avec l’émergence.</p></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 6 : Stratégie émergente – ancrage dans Barney & Hesterly -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Stratégie Émergente : Apprentissage et adaptation</h2>
-            <p>Bien que l’ouvrage soit ancré sur l’avantage concurrentiel durable, Barney & Hesterly abordent <strong>l’incrémentalisme logique</strong> (Quinn) et la <strong>stratégie comme processus émergent</strong> dans les études de cas et dans le chapitre “Strategic Renewal”.</p>
-            <div class="quote">“Les stratégies ne résultent pas toujours de la planification formelle ; elles peuvent émerger des routines, de l’expérimentation et de l’initiative locale.” (Barney & Hesterly, Global Edition)</div>
-            <p>Cette reconnaissance résonne parfaitement avec la formation réelle de la stratégie.</p>
-        </div>
-    </div>
-
-    <!-- Slide 7 : Cas Netflix – Apprentissage par l’expérimentation -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Netflix : Émergence stratégique (Barney & Hesterly, Cas intégrateur)</h2>
-            <p>L’ouvrage consacre un cas à Netflix (Chapitre 5 et cas final) : de la location de DVD par correspondance (stratégie délibérée initiale) à la transition vers le streaming puis la production originale <em>House of Cards</em>. Cette trajectoire illustre une <strong>stratégie émergente</strong> façonnée par l’analyse de données et les apprentissages terrain.</p>
-            <div class="highlight"><i class="fas fa-tv"></i>  Lien avec dissertation : Netflix n’avait pas planifié devenir un studio de production ; c’est en répondant aux évolutions technologiques et aux comportements utilisateurs que le modèle a émergé, avant d’être formalisé.</div>
-        </div>
-    </div>
-
-    <!-- Slide 8 : Post-it® 3M – L’innovation ascendante -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Post-it 3M : Archétype de l’émergence locale</h2>
-            <p>Barney & Hesterly mentionnent 3M dans le chapitre “Implementing Strategy” pour souligner comment les initiatives de terrain (Spencer Silver / Art Fry) deviennent stratégiques. <strong>Aucune intention directoriale initiale</strong>, mais une reconnaissance post-hoc transformée en succès mondial.</p>
-            <p>Cet exemple corrobore la partie II de la dissertation sur la <strong>sérendipité organisationnelle</strong> et la création de connaissance (Nonaka & Takeuchi).</p>
-            <div class="quote"><i class="fas fa-sticky-note"></i>  “La stratégie réalisée est souvent un mix : intention délibérée + initiatives émergentes sélectionnées par l’organisation.”</div>
-        </div>
-    </div>
-
-    <!-- Slide 9 : VRIO et émergence : complémentarité -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Le cadre VRIO face à la dialectique</h2>
-            <p>L’ouvrage de Barney & Hesterly est célèbre pour le <strong>VRIO (Valeur, Rareté, Imitabilité, Organisation)</strong>. Mais la notion d’« Organisation » (O) englobe la capacité à capturer la valeur des initiatives émergentes. Une entreprise bien organisée doit savoir intégrer les apprentissages du bas vers le haut.</p>
-            <p> -> Ainsi, l’ouvrage offre une grille d’analyse où la combinaison <strong>planification délibérée (Ressources allouées) + flexibilité organisationnelle</strong> génère un avantage concurrentiel durable.</p>
-        </div>
-    </div>
-
-    <!-- Slide 10 : IKEA – Cas d’hybridation -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>IKEA : Délibéré stratégique & ajustements locaux</h2>
-            <p>Barney & Hesterly analysent IKEA comme modèle de stratégie délibérée low-cost/différenciation (Chapitre 3 & 4). Cependant, l’adaptation aux marchés locaux (aménagement showroom, cuisine adaptée) relève de l’émergence pragmatique. La dissertation cite ce cas : La planification rigide d’IKEA rencontre le réel, produisant des micro-ajustements.</p>
-            <div class="highlight">Convergence : Les auteurs montrent que même les entreprises les plus planifiées intègrent des innovations issues des opérations locales.</div>
-        </div>
-    </div>
-
-    <!-- Slide 11 : Synthèse des liens ouvrage ⇔ dissertation -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Synthèse des correspondances</h2>
-            <div class="grid-2">
-                <div class="card"><i class="fas fa-book-open"></i><h3>Dissertation</h3><p>Dialectique intention/émergence, stratégie réalisée, apprentissage organisationnel, exemples Apple, IKEA, Netflix, Post-it.</p></div>
-                <div class="card"><i class="fas fa-university"></i><h3>Barney & Hesterly</h3><p>Chapitres : fondements stratégiques, implémentation, contrôle, cas Netflix/IKEA/3M. Accent sur le lien entre formulation et adaptation.</p></div>
-            </div>
-            <p><strong>Thèse commune</strong> : la stratégie n’est ni purement délibérée ni purement émergente mais le fruit d’une interaction dynamique. Barney & Hesterly offrent un cadre analytique pour gérer cette tension.</p>
-        </div>
-    </div>
-
-    <!-- Slide 12 : Contrôle et apprentissage – Sensemaking (Weick) -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Sensemaking et rôle du dirigeant</h2>
-            <p>Dans la dissertation, Weick (1995) est mobilisé pour le <em>sensemaking</em>. Barney & Hesterly, dans le chapitre “Strategic Control”, décrivent des mécanismes de contrôle interactif et diagnostique. Les dirigeants doivent interpréter les initiatives émergentes pour les intégrer à la stratégie formelle.</p>
-            <div class="quote">“Les managers efficaces ne sont ni des dictateurs du plan, ni des opportunistes passifs ; ils cultivent une stratégie intentionnée tout en restant ouverts à l’émergence.”</div>
-        </div>
-    </div>
-
-    <!-- Slide 13 : Cas Apple – Vision délibérée (Steve Jobs) -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Apple sous Jobs : Exemple de stratégie délibérée</h2>
-            <p>L’ouvrage Barney & Hesterly évoque Apple dans plusieurs cas (écosystème fermé, différenciation). La dissertation souligne la vision ferme de Jobs : intention délibérée <strong>créer l’écosystème intégré</strong>. Les auteurs montrent que cette stratégie délibérée a permis un avantage concurrentiel durable, mais notent également qu’Apple a su s’adapter (ex: App Store, innovation incrémentale).</p>
-            <p>Preuve que même une entreprise “délibérée” fait une place aux initiatives venues des développeurs (émergence externe).</p>
-        </div>
-    </div>
-
-    <!-- Slide 14 : Lien avec le chapitre “Stratégie corporate & diversification” -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Stratégie corporate : Délibéré vs Émergent</h2>
-            <p>Barney & Hesterly (Chapitre 7 & 8) traitent de la diversification et fusions-acquisitions. Une acquisition peut être le résultat d’une planification délibérée (croissance externe) ou une réponse émergente à une opportunité soudaine. La <strong>synergie entre les deux</strong> est soulignée.</p>
-            <p>La dissertation élargit cette vision à l’échelle organisationnelle : toute stratégie corporate doit concilier planification et flexibilité.</p>
-        </div>
-    </div>
-
-    <!-- Slide 15 : Implémentation stratégique et alignement -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Implémentation : le terrain comme laboratoire</h2>
-            <p>Dans le chapitre 12 “Implementing Strategy”, Barney & Hesterly abordent la structure, la culture, les systèmes. Une mise en œuvre trop rigide tue l’innovation ascendante. À l’inverse, une trop grande liberté peut fragmenter la cohérence. Les auteurs recommandent des “systèmes de contrôle flexibles” favorisant l’émergence des meilleures pratiques.</p>
-            <div class="highlight"><i class="fas fa-users"></i>  En phase avec la dissertation : la stratégie réalisée est le résultat d’une orchestration entre intention et ajustements locaux.</div>
-        </div>
-    </div>
-
-    <!-- Slide 16 : Exemple concret supplémentaire – Walmart -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Walmart : Délibéré et adaptation terrain</h2>
-            <p>Barney & Hesterly utilisent Walmart comme cas (Chapitre 4 & 10) : la stratégie délibérée de leadership par les coûts (EDI, cross-docking) a été définie par Sam Walton. Pourtant, l’expansion internationale a nécessité des adaptations émergentes (formats de magasin, gestion locale). Ce mix illustre que la <strong>performance durable dépend de la capacité à intégrer les enseignements du marché</strong>.</p>
-        </div>
-    </div>
-
-    <!-- Slide 17 : Stratégie délibérée & émergente : un continuum -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Un continuum selon Barney & Hesterly</h2>
-            <p>Bien que l’ouvrage ne consacre pas un chapitre entier à Mintzberg, la philosophie sous-jacente est que <strong>la stratégie est un processus adaptatif</strong> au sein duquel les managers allouent des ressources sur la base de plans tout en restant à l’écoute des initiatives non planifiées.</p>
-            <div class="quote">“Le défi du management stratégique est d’aligner les ressources rares (VRIO) avec des opportunités, qu’elles soient prévues ou non.” (Barney & Hesterly)</div>
-            <p>Cette vision valide la problématique centrale de la dissertation : la dialectique constitue la clé de lecture la plus fidèle.</p>
-        </div>
-    </div>
-
-    <!-- Slide 18 : Leçons pour les managers modernes -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Implications managériales</h2>
-            <ul style="margin-left: 1.8rem; font-size: 1.05rem; line-height: 1.5;">
-                <li><strong>Articuler planification et expérimentation</strong> : utiliser des pilotes (test & learn).</li>
-                <li><strong>Mettre en place des mécanismes d’absorption</strong> des initiatives de terrain (boîtes à idées, intrapreneuriat).</li>
-                <li><strong>Éviter la rigidité des plans</strong> : revues stratégiques trimestrielles avec prise en compte des patterns émergents.</li>
-                <li><strong>Capitaliser sur l’analyse VRIO</strong> pour discriminer quelles émergences méritent d’être intégrées.</li>
+            <h2>Définition : Stratégie Émergente</h2>
+            <div class="highlight">"Un pattern d'actions cohérent qui se dessine sans intention formelle préalable." (Henry Mintzberg)</div>
+            <ul>
+                <li>Résultat d'initiatives locales et de routines.</li>
+                <li>Réponse adaptative aux chocs environnementaux.</li>
+                <li>Processus de "Bottom-up" (Remontée du terrain).</li>
             </ul>
-            <p>Barney & Hesterly fournissent des outils concrets pour hybrider les deux approches.</p>
+            <div class="slide-number">04 / 20</div>
         </div>
     </div>
 
-    <!-- Slide 19 : Conclusion générale – Apports de l’ouvrage à la dissertation -->
     <div class="slide">
         <div class="slide-content">
-            <h2>Conclusion : Une complémentarité féconde</h2>
-            <p>La dissertation démontre que la stratégie réalisée émerge de l’interaction entre intention délibérée et adaptations incrémentales. <strong>Barney & Hesterly enrichissent cette thèse</strong> en fournissant un cadre analytique (VRIO, analyse de l’environnement, contrôle stratégique) permettant d’opérationnaliser la dialectique.</p>
-            <p>L’ouvrage “Strategic Management and Competitive Advantage” est ainsi une lecture indispensable pour tout dirigeant souhaitant <strong>maîtriser l’art d’allier la rigueur planificatrice et la souplesse adaptative</strong>.</p>
-            <div class="highlight">Fidèle à la problématique initiale : “la dialectique entre intention délibérée et émergence adaptative constitue la clé de lecture la plus fidèle de la formation réelle de la stratégie”.</div>
+            <h2>Problématique Centrale</h2>
+            <div class="quote">
+                "Dans quelle mesure la dialectique entre intention délibérée et émergence adaptative constitue-t-elle la clé de lecture la plus fidèle de la formation réelle de la stratégie ?"
+            </div>
+            <p>Il ne s'agit pas de choisir l'un contre l'autre, mais de comprendre leur <strong>interaction dynamique</strong>.</p>
+            <div class="slide-number">05 / 20</div>
         </div>
     </div>
 
-    <!-- Slide 20 : Réflexion ouverte – IA et planification prédictive -->
     <div class="slide">
         <div class="slide-content">
-            <h2>Ouverture : IA générative & futur de la dialectique</h2>
-            <p>Barney & Hesterly n’abordent pas l’IA dans les anciennes éditions, mais les éditions globales récentes évoquent les big data. La dissertation conclut en questionnant le retour possible d’une planification hyper-rationnelle grâce à l’IA prédictive. Cependant, l’incertitude radicale persiste : l’<strong>émergence humaine restera cruciale</strong>. L’hybridation deviendra encore plus sophistiquée.</p>
-            <p><i class="fas fa-robot"></i>  Les entreprises qui réussiront demain sauront combiner algorithmes délibérés et capacités d’improvisation.</p>
-            <footer class="page-footer">Présentation réalisée à partir de la dissertation MAN301P – Yacine Najimi et de l’ouvrage Barney & Hesterly (Global Edition). Mars 2026.</footer>
+            <div class="pill">Partie I</div>
+            <h2>Le Dessein Rationnel (Design School)</h2>
+            <p>Pourquoi le "Délibéré" reste-t-il indispensable ?</p>
+            <div class="grid">
+                <div class="card"><h3>Cohérence</h3><p>Aligner des milliers de collaborateurs sur un but commun.</p></div>
+                <div class="card"><h3>Légitimité</h3><p>Rassurer les investisseurs et fixer des indicateurs de performance (KPI).</p></div>
+            </div>
+            <div class="slide-number">06 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Le Positionnement de Porter</h2>
+            <p>Michael Porter voit la stratégie comme un <strong>choix délibéré</strong> de positionnement sur un marché.</p>
+            <ul>
+                <li>Différenciation vs Domination par les coûts.</li>
+                <li>La planification stratégique comme "Barrière à l'entrée".</li>
+                <li>Exemple : Le modèle low-cost délibéré de Ryanair.</li>
+            </ul>
+            <div class="slide-number">07 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Cas d'école : Apple sous Steve Jobs</h2>
+            <div class="highlight">Une vision délibérée "Top-Down" radicale.</div>
+            <p>Jobs n'écoutait pas les panels de consommateurs (Émergence) mais imposait un écosystème fermé (Délibéré). L'iPhone est le fruit d'une intention pure traduisant une volonté de disruption totale.</p>
+            <div class="slide-number">08 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Les Limites du "Pur Délibéré"</h2>
+            <div class="grid">
+                <div class="card"><h3>Rigidité</h3><p>Incapacité à pivoter quand le marché change brusquement.</p></div>
+                <div class="card"><h3>Cécité</h3><p>Les dirigeants s'enferment dans leurs propres modèles mentaux.</p></div>
+            </div>
+            <p>Exemple de <strong>Blockbuster</strong> : Une stratégie délibérée trop ancrée dans le physique face à l'émergence du streaming.</p>
+            <div class="slide-number">09 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <div class="pill">Partie II</div>
+            <h2>L'Émergence : L'Apprentissage par l'Action</h2>
+            <p>Ici, la stratégie n'est plus ce que l'on <em>dit</em>, mais ce que l'on <em>fait</em>.</p>
+            <div class="highlight">James Brian Quinn et l'<strong>Incrémentalisme Logique</strong> : On avance par petits pas pour réduire le risque.</div>
+            <div class="slide-number">10 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Le Modèle de Mintzberg : La Stratégie Réalisée</h2>
+            <p>La réalité est un entonnoir :</p>
+            <ul>
+                <li>Stratégie Intentonnée (Délibérée).</li>
+                <li>(-) Stratégie Non-Réalisée (Plans abandonnés).</li>
+                <li>(+) Stratégie Émergente (Opportunités saisies).</li>
+                <li>(=) <strong>Stratégie Réalisée</strong>.</li>
+            </ul>
+            <div class="slide-number">11 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Cas d'école : Netflix et le Pivot Streaming</h2>
+            <p>Netflix a commencé par la location de DVD (Délibéré). L'émergence est venue de l'analyse des données utilisateurs et de l'adaptation technologique.</p>
+            <div class="highlight">Le passage à la production originale (House of Cards) est une émergence devenue stratégie délibérée.</div>
+            <div class="slide-number">12 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>L'Innovation Ascendante : Le Post-it (3M)</h2>
+            <p>L'exemple type de la sérendipité organisationnelle.</p>
+            <ul>
+                <li>Aucun plan de 3M ne prévoyait un adhésif qui "ne colle pas".</li>
+                <li>L'initiative d'un employé (Art Fry) a créé le marché.</li>
+                <li>Rôle de la culture d'entreprise : laisser de l'espace pour l'imprévu.</li>
+            </ul>
+            <div class="slide-number">13 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <div class="pill">Partie III</div>
+            <h2>La Synthèse Dialectique</h2>
+            <p>Comment concilier les deux ? Le concept d'<strong>Ambidextrie Organisationnelle</strong>.</p>
+            <div class="grid">
+                <div class="card"><h3>Exploitation</h3><p>Optimiser l'existant (Délibéré).</p></div>
+                <div class="card"><h3>Exploration</h3><p>Chercher le futur (Émergent).</p></div>
+            </div>
+            <div class="slide-number">14 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Le Sensemaking de Karl Weick</h2>
+            <p>Le rôle du dirigeant moderne :</p>
+            <div class="highlight">"Les managers ne sont pas des architectes, mais des éditeurs de sens."</div>
+            <p>Il faut savoir <strong>nommer</strong> une pratique émergente pour la transformer en stratégie formelle.</p>
+            <div class="slide-number">15 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Le Cadre VRIO réinterprété</h2>
+            <p>Barney & Hesterly soulignent que l'avantage concurrentiel dépend de l'<strong>Organisation (O)</strong>.</p>
+            <ul>
+                <li>Une bonne organisation capte la valeur des idées émergentes.</li>
+                <li>Si le système est trop rigide, les ressources précieuses (VRI) restent inutilisées.</li>
+            </ul>
+            <div class="slide-number">16 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>IKEA : L'hybridation réussie</h2>
+            <p><strong>Cœur de métier délibéré :</strong> Le design démocratique.</p>
+            <p><strong>Adaptation émergente :</strong> Chaque magasin IKEA s'adapte aux habitudes de vie locales (ex: cuisines en Chine vs USA) sans trahir le concept central.</p>
+            <div class="slide-number">17 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Conclusion : La stratégie est un flux</h2>
+            <p>La réponse à notre problématique :</p>
+            <div class="highlight">La performance réside dans l'équilibre entre <strong>Contrôle</strong> et <strong>Apprentissage</strong>.</div>
+            <p>Être délibéré sur les valeurs et la vision, émergent sur les tactiques.</p>
+            <div class="slide-number">18 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Ouverture : IA et Stratégie</h2>
+            <p>L'IA prédictive va-t-elle tuer l'émergence ?</p>
+            <ul>
+                <li>Retour à une planification hyper-rationnelle via les données.</li>
+                <li>OU amplification de l'émergence grâce à une analyse temps réel des signaux faibles.</li>
+            </ul>
+            <div class="slide-number">19 / 20</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Merci pour votre attention</h2>
+            <div class="highlight">Questions & Réponses</div>
+            <p style="font-size: 0.9rem;">Présentation réalisée par Yacine Najimi | MAN301P</p>
+            <div class="slide-number">20 / 20</div>
         </div>
     </div>
 </div>
 
 <script>
-    // Mise à jour barre de progression et numéro de slide
-    const slides = document.querySelectorAll('.slide');
     const progressBar = document.getElementById('progressBar');
-    const slideCounter = document.getElementById('slideCounter');
-
-    function updateProgressAndCounter() {
+    window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
         progressBar.style.width = scrollPercent + '%';
-
-        // déterminer slide active
-        let activeIndex = 0;
-        const viewportMid = scrollTop + window.innerHeight / 2;
-        slides.forEach((slide, idx) => {
-            const rect = slide.getBoundingClientRect();
-            const slideTop = rect.top + scrollTop;
-            const slideBottom = slideTop + rect.height;
-            if (viewportMid >= slideTop && viewportMid <= slideBottom) {
-                activeIndex = idx;
-            }
-        });
-        slideCounter.innerText = `${activeIndex+1} / ${slides.length}`;
-    }
-
-    window.addEventListener('scroll', updateProgressAndCounter);
-    window.addEventListener('resize', updateProgressAndCounter);
-    updateProgressAndCounter();
+    });
 </script>
 </body>
 </html>

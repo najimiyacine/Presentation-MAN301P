@@ -2,272 +2,319 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>MAN301P | Stratégie Délibérée & Émergente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenance Stratégie - MAN301P</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f0f4f8; scroll-behavior: smooth; overflow-y: scroll; scroll-snap-type: y mandatory; }
-        .slides-container { display: flex; flex-direction: column; width: 100%; }
-        .slide { min-height: 100vh; width: 100%; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 3rem 10%; background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative; }
-        .slide:nth-child(even) { background: #fafcff; }
-        .slide-content { max-width: 1000px; width: 100%; }
-        h1 { font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #1E3C72, #2A5298); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
-        h2 { font-size: 2.2rem; color: #0A2B4E; border-left: 6px solid #2A6F97; padding-left: 1.5rem; margin-bottom: 1.5rem; }
-        h3 { font-size: 1.4rem; color: #2A6F97; margin-bottom: 1rem; font-weight: 600; }
-        p { font-size: 1.15rem; line-height: 1.6; color: #334155; margin-bottom: 1rem; }
-        ul { margin-left: 2rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; font-size: 1.1rem; color: #334155; }
-        .pill { background: #E9F0F9; color: #1E4A76; border-radius: 40px; padding: 0.4rem 1.2rem; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; text-transform: uppercase; }
-        .highlight { background: #f1f5f9; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #2A6F97; margin: 1.5rem 0; }
-        .quote { font-style: italic; font-size: 1.2rem; padding: 1.5rem; color: #475569; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; text-align: center; margin: 2rem 0; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem; }
-        .card { background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; }
-        .progress-bar { position: fixed; top: 0; left: 0; height: 6px; background: #2A6F97; width: 0%; z-index: 1000; transition: width 0.3s; }
-        .slide-number { position: absolute; bottom: 2rem; right: 2rem; font-size: 0.9rem; color: #94a3b8; font-weight: 600; }
+        :root {
+            --mck-blue: #001f3f;
+            --mck-gold: #c5a059;
+            --soft-bg: #f4f7f9;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--soft-bg); }
+        .slide { 
+            display: none; 
+            min-height: 600px; 
+            max-width: 1000px; 
+            margin: 30px auto; 
+            background: white; 
+            padding: 50px; 
+            border-radius: 4px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-top: 10px solid var(--mck-blue);
+            position: relative;
+        }
+        .active { display: block; animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .case-study-tag { background: var(--mck-blue); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .nav-btn { background: var(--mck-blue); color: white; padding: 12px 24px; border-radius: 2px; cursor: pointer; transition: 0.3s; }
+        .nav-btn:hover { background: #003366; }
+        .author-card { border-left: 4px solid var(--mck-gold); background: #fdfaf3; padding: 15px; margin: 15px 0; }
+        .highlight { color: var(--mck-blue); font-weight: bold; }
+        .progress-bar { height: 4px; background: #ddd; width: 100%; position: absolute; top: 0; left: 0; }
+        .progress-fill { height: 100%; background: var(--mck-gold); transition: 0.3s; }
     </style>
 </head>
 <body>
-<div class="progress-bar" id="progressBar"></div>
 
-<div class="slides-container">
-    <div class="slide">
-        <div class="slide-content">
-            <div class="pill">MAN301P - Stratégie de l'Entreprise</div>
-            <h1>Stratégie Délibérée & Stratégie Émergente</h1>
-            <p>Sujet n°18 : La dialectique entre intention et adaptation dans les organisations contemporaines.</p>
-            <div class="highlight"><strong>Yacine NAJIMI</strong><br>UM6P - FGSES | Avril 2026</div>
-            <div class="slide-number">01 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>L'Incertitude comme Postulat</h2>
-            <p>Dans un monde BANI (Brittle, Anxious, Non-linear, Incomprehensible), la planification classique est bousculée.</p>
-            <div class="grid">
-                <div class="card"><h3>Vision Classique</h3><p>La stratégie comme "Plan" (Design School). Omniscience des dirigeants.</p></div>
-                <div class="card"><h3>Réalité Terrain</h3><p>La stratégie comme "Processus". Apprentissage par l'erreur.</p></div>
+    <div id="slide1" class="slide active">
+        <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+        <div class="text-center mt-20">
+            <h1 class="text-4xl font-extrabold text-blue-900 mb-4">Cohérence Stratégique et Mobilisation des Acteurs</h1>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-6"></div>
+            <p class="text-xl text-gray-600 mb-10">Réconcilier la rigueur directionnelle et l'énergie humaine</p>
+            <div class="text-sm text-gray-500">
+                <p><strong>Yacine NAJIMI</strong></p>
+                <p>MAN301P - Stratégie de l'Entreprise</p>
+                <p>Avril 2026</p>
             </div>
-            <div class="slide-number">02 / 20</div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Définition : Stratégie Délibérée</h2>
-            <div class="highlight">"Une conception consciente, rationnelle et intentionnelle formulée par le sommet hiérarchique."</div>
-            <ul>
-                <li>Analyse préalable (PESTEL, SWOT, 5 Forces).</li>
-                <li>Allocation rigoureuse des ressources (Modèle VRIO de Barney).</li>
-                <li>Objectif : Contrôle total de la trajectoire organisationnelle.</li>
-            </ul>
-            <div class="slide-number">03 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Définition : Stratégie Émergente</h2>
-            <div class="highlight">"Un pattern d'actions cohérent qui se dessine sans intention formelle préalable." (Henry Mintzberg)</div>
-            <ul>
-                <li>Résultat d'initiatives locales et de routines.</li>
-                <li>Réponse adaptative aux chocs environnementaux.</li>
-                <li>Processus de "Bottom-up" (Remontée du terrain).</li>
-            </ul>
-            <div class="slide-number">04 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Problématique Centrale</h2>
-            <div class="quote">
-                "Dans quelle mesure la dialectique entre intention délibérée et émergence adaptative constitue-t-elle la clé de lecture la plus fidèle de la formation réelle de la stratégie ?"
+    <div id="slide2" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-8"><i class="fas fa-lightbulb mr-3"></i>Introduction</h2>
+        <div class="grid grid-cols-2 gap-10">
+            <div class="space-y-6">
+                <p><span class="highlight">Contexte :</span> La disruption est devenue la norme. La stratégie n'est plus une planification figée mais une quête d'équilibre.</p>
+                <p><span class="highlight">Les deux écueils :</span> L'incohérence opérationnelle et l'inertie humaine.</p>
             </div>
-            <p>Il ne s'agit pas de choisir l'un contre l'autre, mais de comprendre leur <strong>interaction dynamique</strong>.</p>
-            <div class="slide-number">05 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <div class="pill">Partie I</div>
-            <h2>Le Dessein Rationnel (Design School)</h2>
-            <p>Pourquoi le "Délibéré" reste-t-il indispensable ?</p>
-            <div class="grid">
-                <div class="card"><h3>Cohérence</h3><p>Aligner des milliers de collaborateurs sur un but commun.</p></div>
-                <div class="card"><h3>Légitimité</h3><p>Rassurer les investisseurs et fixer des indicateurs de performance (KPI).</p></div>
+            <div class="bg-blue-900 text-white p-8 rounded shadow-lg">
+                <h3 class="text-lg font-semibold mb-4 text-yellow-500">Problématique Centrale</h3>
+                <p class="italic text-lg text-center">"Dans quelle mesure la cohérence stratégique sert-elle de catalyseur à la mobilisation des acteurs ?"</p>
             </div>
-            <div class="slide-number">06 / 20</div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Le Positionnement de Porter</h2>
-            <p>Michael Porter voit la stratégie comme un <strong>choix délibéré</strong> de positionnement sur un marché.</p>
-            <ul>
-                <li>Différenciation vs Domination par les coûts.</li>
-                <li>La planification stratégique comme "Barrière à l'entrée".</li>
-                <li>Exemple : Le modèle low-cost délibéré de Ryanair.</li>
-            </ul>
-            <div class="slide-number">07 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Cas d'école : Apple sous Steve Jobs</h2>
-            <div class="highlight">Une vision délibérée "Top-Down" radicale.</div>
-            <p>Jobs n'écoutait pas les panels de consommateurs (Émergence) mais imposait un écosystème fermé (Délibéré). L'iPhone est le fruit d'une intention pure traduisant une volonté de disruption totale.</p>
-            <div class="slide-number">08 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Les Limites du "Pur Délibéré"</h2>
-            <div class="grid">
-                <div class="card"><h3>Rigidité</h3><p>Incapacité à pivoter quand le marché change brusquement.</p></div>
-                <div class="card"><h3>Cécité</h3><p>Les dirigeants s'enferment dans leurs propres modèles mentaux.</p></div>
+    <div id="slide3" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-10"><i class="fas fa-list-ol mr-3"></i>Structure de la Réflexion</h2>
+        <div class="space-y-6">
+            <div class="flex items-center space-x-4 border-b pb-4">
+                <div class="bg-blue-100 text-blue-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">I</div>
+                <p class="text-lg">La cohérence stratégique comme architecture de l'unité.</p>
             </div>
-            <p>Exemple de <strong>Blockbuster</strong> : Une stratégie délibérée trop ancrée dans le physique face à l'émergence du streaming.</p>
-            <div class="slide-number">09 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <div class="pill">Partie II</div>
-            <h2>L'Émergence : L'Apprentissage par l'Action</h2>
-            <p>Ici, la stratégie n'est plus ce que l'on <em>dit</em>, mais ce que l'on <em>fait</em>.</p>
-            <div class="highlight">James Brian Quinn et l'<strong>Incrémentalisme Logique</strong> : On avance par petits pas pour réduire le risque.</div>
-            <div class="slide-number">10 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Le Modèle de Mintzberg : La Stratégie Réalisée</h2>
-            <p>La réalité est un entonnoir :</p>
-            <ul>
-                <li>Stratégie Intentonnée (Délibérée).</li>
-                <li>(-) Stratégie Non-Réalisée (Plans abandonnés).</li>
-                <li>(+) Stratégie Émergente (Opportunités saisies).</li>
-                <li>(=) <strong>Stratégie Réalisée</strong>.</li>
-            </ul>
-            <div class="slide-number">11 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Cas d'école : Netflix et le Pivot Streaming</h2>
-            <p>Netflix a commencé par la location de DVD (Délibéré). L'émergence est venue de l'analyse des données utilisateurs et de l'adaptation technologique.</p>
-            <div class="highlight">Le passage à la production originale (House of Cards) est une émergence devenue stratégie délibérée.</div>
-            <div class="slide-number">12 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <h2>L'Innovation Ascendante : Le Post-it (3M)</h2>
-            <p>L'exemple type de la sérendipité organisationnelle.</p>
-            <ul>
-                <li>Aucun plan de 3M ne prévoyait un adhésif qui "ne colle pas".</li>
-                <li>L'initiative d'un employé (Art Fry) a créé le marché.</li>
-                <li>Rôle de la culture d'entreprise : laisser de l'espace pour l'imprévu.</li>
-            </ul>
-            <div class="slide-number">13 / 20</div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="slide-content">
-            <div class="pill">Partie III</div>
-            <h2>La Synthèse Dialectique</h2>
-            <p>Comment concilier les deux ? Le concept d'<strong>Ambidextrie Organisationnelle</strong>.</p>
-            <div class="grid">
-                <div class="card"><h3>Exploitation</h3><p>Optimiser l'existant (Délibéré).</p></div>
-                <div class="card"><h3>Exploration</h3><p>Chercher le futur (Émergent).</p></div>
+            <div class="flex items-center space-x-4 border-b pb-4">
+                <div class="bg-blue-100 text-blue-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">II</div>
+                <p class="text-lg">La mobilisation des acteurs : De l'adhésion à l'engagement créatif.</p>
             </div>
-            <div class="slide-number">14 / 20</div>
+            <div class="flex items-center space-x-4 border-b pb-4">
+                <div class="bg-blue-100 text-blue-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">III</div>
+                <p class="text-lg">La synthèse par l'agilité : L'organisation apprenante.</p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Le Sensemaking de Karl Weick</h2>
-            <p>Le rôle du dirigeant moderne :</p>
-            <div class="highlight">"Les managers ne sont pas des architectes, mais des éditeurs de sens."</div>
-            <p>Il faut savoir <strong>nommer</strong> une pratique émergente pour la transformer en stratégie formelle.</p>
-            <div class="slide-number">15 / 20</div>
+    <div id="slide4" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">I. L'Architecture de l'Unité</h2>
+        <div class="author-card">
+            <p class="font-bold"><i class="fas fa-user-tie mr-2"></i> Michael Porter (1996)</p>
+            <p class="italic">"La stratégie est la création d’une configuration unique d’activités."</p>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mt-8">
+            <div class="p-4 border-t-4 border-blue-900 shadow-sm text-center">
+                <i class="fas fa-arrows-alt-v text-3xl mb-3 text-blue-900"></i>
+                <h4 class="font-bold">Verticale</h4>
+                <p class="text-sm">De la vision à l'exécution terrain.</p>
+            </div>
+            <div class="p-4 border-t-4 border-blue-900 shadow-sm text-center">
+                <i class="fas fa-arrows-alt-h text-3xl mb-3 text-blue-900"></i>
+                <h4 class="font-bold">Horizontale</h4>
+                <p class="text-sm">Sinergie entre les départements.</p>
+            </div>
+            <div class="p-4 border-t-4 border-blue-900 shadow-sm text-center">
+                <i class="fas fa-history text-3xl mb-3 text-blue-900"></i>
+                <h4 class="font-bold">Temporelle</h4>
+                <p class="text-sm">Entre court et long terme.</p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Le Cadre VRIO réinterprété</h2>
-            <p>Barney & Hesterly soulignent que l'avantage concurrentiel dépend de l'<strong>Organisation (O)</strong>.</p>
-            <ul>
-                <li>Une bonne organisation capte la valeur des idées émergentes.</li>
-                <li>Si le système est trop rigide, les ressources précieuses (VRI) restent inutilisées.</li>
-            </ul>
-            <div class="slide-number">16 / 20</div>
+    <div id="slide5" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
+        <div class="case-study-tag">Étude de Cas</div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Le Renouveau de Microsoft</h2>
+        <div class="flex items-center space-x-8">
+            <div class="w-1/3 text-center">
+                <i class="fab fa-microsoft text-8xl text-blue-500"></i>
+                <p class="mt-4 font-bold">Satya Nadella (2014)</p>
+            </div>
+            <div class="w-2/3 space-y-4 border-l pl-8">
+                <p class="text-red-600 font-bold"><i class="fas fa-times-circle mr-2"></i> Avant : Silos hermétiques et rivalités internes.</p>
+                <p class="text-green-600 font-bold"><i class="fas fa-check-circle mr-2"></i> Après : "Cloud First, Mobile First".</p>
+                <p class="bg-gray-100 p-4 rounded text-sm italic">"En sacrifiant les vaches sacrées, il a restauré une cohérence horizontale et libéré l'énergie des collaborateurs."</p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>IKEA : L'hybridation réussie</h2>
-            <p><strong>Cœur de métier délibéré :</strong> Le design démocratique.</p>
-            <p><strong>Adaptation émergente :</strong> Chaque magasin IKEA s'adapte aux habitudes de vie locales (ex: cuisines en Chine vs USA) sans trahir le concept central.</p>
-            <div class="slide-number">17 / 20</div>
+    <div id="slide6" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Réduire la Charge Cognitive</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <p>La stratégie simplifie la complexité en servant de <span class="highlight">filtre décisionnel</span>.</p>
+                <div class="author-card">
+                    <p class="font-bold">Kaplan & Norton</p>
+                    <p class="text-sm">Le "Balanced Scorecard" traduit l'abstraction en indicateurs tangibles.</p>
+                </div>
+            </div>
+            <div class="bg-blue-50 p-6 rounded text-center border">
+                <i class="fas fa-brain text-5xl text-blue-900 mb-4"></i>
+                <h4 class="font-bold mb-2 text-blue-900">Sécurité Psychologique</h4>
+                <p class="text-sm">L'erreur est permise tant qu'elle s'inscrit dans la direction globale.</p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Conclusion : La stratégie est un flux</h2>
-            <p>La réponse à notre problématique :</p>
-            <div class="highlight">La performance réside dans l'équilibre entre <strong>Contrôle</strong> et <strong>Apprentissage</strong>.</div>
-            <p>Être délibéré sur les valeurs et la vision, émergent sur les tactiques.</p>
-            <div class="slide-number">18 / 20</div>
+    <div id="slide7" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">II. Mobilisation : L'Engagement Créatif</h2>
+        <div class="text-xl italic text-blue-700 mb-8">"Mobiliser ne signifie pas convaincre de suivre, mais donner les moyens d’agir."</div>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="p-6 bg-yellow-50 rounded shadow">
+                <h4 class="font-bold mb-3"><i class="fas fa-bolt mr-2 text-yellow-600"></i> Empowerment</h4>
+                <p class="text-sm">Déplacement du centre de décision vers ceux qui possèdent l'information de terrain.</p>
+            </div>
+            <div class="p-6 bg-blue-50 rounded shadow">
+                <h4 class="font-bold mb-3"><i class="fas fa-users mr-2 text-blue-600"></i> Subsidiarité</h4>
+                <p class="text-sm">Rendre les individus responsables de A à Z sur leur périmètre.</p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Ouverture : IA et Stratégie</h2>
-            <p>L'IA prédictive va-t-elle tuer l'émergence ?</p>
-            <ul>
-                <li>Retour à une planification hyper-rationnelle via les données.</li>
-                <li>OU amplification de l'émergence grâce à une analyse temps réel des signaux faibles.</li>
-            </ul>
-            <div class="slide-number">19 / 20</div>
+    <div id="slide8" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+        <div class="case-study-tag">Étude de Cas</div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">L'Autogestion chez Buurtzorg</h2>
+        <div class="flex items-center space-x-10">
+            <div class="w-1/2 bg-gray-50 p-6 rounded border-2 border-blue-200">
+                <ul class="space-y-3">
+                    <li><i class="fas fa-minus-circle text-red-500 mr-2"></i> Zéro cadres intermédiaires.</li>
+                    <li><i class="fas fa-user-friends text-blue-500 mr-2"></i> Équipes autonomes (10-12 pers).</li>
+                    <li><i class="fas fa-chart-line text-green-500 mr-2"></i> Satisfaction client record.</li>
+                </ul>
+            </div>
+            <div class="w-1/2 text-center">
+                <i class="fas fa-hospital-user text-8xl text-blue-900 mb-4"></i>
+                <p class="text-lg font-semibold">Coûts de gestion inférieurs de <span class="text-green-600 text-2xl font-bold">25%</span></p>
+            </div>
         </div>
     </div>
 
-    <div class="slide">
-        <div class="slide-content">
-            <h2>Merci pour votre attention</h2>
-            <div class="highlight">Questions & Réponses</div>
-            <p style="font-size: 0.9rem;">Présentation réalisée par Yacine Najimi | MAN301P</p>
-            <div class="slide-number">20 / 20</div>
+    <div id="slide9" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Le Manager Intermédiaire : Le Traducteur</h2>
+        <div class="space-y-6">
+            <div class="p-4 bg-gray-100 border-l-4 border-blue-900">
+                <p><strong>Gestion des Paradoxes :</strong> Donner du sens aux contraintes financières tout en valorisant le métier.</p>
+            </div>
+            <div class="author-card">
+                <p class="font-bold"><i class="fas fa-quote-left mr-2"></i> Karl Weick (1995) : Le Sensemaking</p>
+                <p>L'organisation doit être une "machine à fabriquer du sens". La stratégie doit porter une dimension identitaire forte.</p>
+            </div>
+            <div class="text-center italic font-semibold text-red-600">
+                Attention au "hiatus de crédibilité" : Si les actes des dirigeants contredisent la stratégie, les acteurs se désengagent.
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    const progressBar = document.getElementById('progressBar');
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + '%';
-    });
-</script>
+    <div id="slide10" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">III. Synthèse : L'Organisation Apprenante</h2>
+        <div class="flex justify-around items-center h-48">
+            <div class="text-center p-6 border rounded w-1/3">
+                <h4 class="font-bold">Taylorisme</h4>
+                <p class="text-xs text-gray-500 italic">Penseurs vs Exécutants</p>
+                <i class="fas fa-long-arrow-alt-right my-2"></i>
+            </div>
+            <div class="bg-blue-900 text-white p-8 rounded-full w-48 h-48 flex items-center justify-center text-center shadow-xl">
+                <p class="font-bold">Modèle de Peter Senge</p>
+            </div>
+            <div class="text-center p-6 border rounded w-1/3">
+                <h4 class="font-bold">Apprenant</h4>
+                <p class="text-xs text-gray-500 italic">Cohérence circulaire</p>
+                <i class="fas fa-undo-alt my-2"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide11" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+        <div class="case-study-tag">Étude de Cas</div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Haier et le modèle Rendanheyi</h2>
+        <div class="grid grid-cols-2 gap-10">
+            <div>
+                <i class="fas fa-network-wired text-7xl text-blue-900 mb-4"></i>
+                <p>Fragmentation en milliers de <span class="highlight">micro-entreprises</span>.</p>
+            </div>
+            <div class="space-y-4">
+                <p class="bg-blue-50 p-4 rounded text-sm italic">"La cohérence est assurée par le partage des ressources du groupe, mais la mobilisation est maximale car chaque unité partage les profits générés."</p>
+                <p>Chaque employé agit comme un <span class="highlight">propriétaire</span>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide12" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">La Résilience face aux Crises</h2>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="bg-red-50 p-6 rounded border border-red-200">
+                <h4 class="text-red-900 font-bold mb-3"><i class="fas fa-shield-alt mr-2"></i> Haute Fiabilité (Weick)</h4>
+                <p class="text-sm">Dans le chaos, les acteurs improvisent en s'appuyant sur le cadre cohérent intériorisé.</p>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fas fa-wind text-6xl text-gray-400 mb-4"></i>
+                    <p class="italic text-gray-600">"On ne mobilise pas une équipe le jour de la tempête si on ne l'a pas impliquée durant le calme."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide13" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-8">Conclusion : La Stratégie est Biologique</h2>
+        <div class="space-y-6">
+            <p class="text-lg">La stratégie n'est pas un document, mais une <span class="highlight">conversation permanente</span>.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-50 border rounded shadow-sm text-center">
+                    <p class="font-bold text-blue-900">La Cohérence</p>
+                    <p class="text-sm">Apporte le vocabulaire et la grammaire.</p>
+                </div>
+                <div class="p-4 bg-gray-50 border rounded shadow-sm text-center">
+                    <p class="font-bold text-blue-900">La Mobilisation</p>
+                    <p class="text-sm">Apporte le souffle et l'éloquence.</p>
+                </div>
+            </div>
+            <div class="mt-10 p-6 bg-blue-900 text-white rounded text-center italic">
+                "Passer d'un exercice de géométrie (tracer des lignes) à un exercice de biologie (cultiver un organisme)."
+            </div>
+        </div>
+    </div>
+
+    <div id="slide14" class="slide">
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+        <h2 class="text-2xl font-bold text-blue-900 mb-10"><i class="fas fa-robot mr-3"></i>Ouverture : L'Ère de l'Intelligence Artificielle</h2>
+        <div class="flex flex-col items-center justify-center h-64 text-center">
+            <p class="text-xl mb-6 font-semibold">Le nouveau défi des managers de demain :</p>
+            <div class="bg-gray-100 p-8 rounded-lg shadow-inner max-w-lg italic">
+                "L'IA sera-t-elle un outil d'hyper-contrôle qui aliène les acteurs, ou un assistant cognitif qui libère du temps pour la créativité et l'engagement émotionnel ?"
+            </div>
+            <p class="mt-10 text-2xl font-bold text-blue-900">Merci de votre attention.</p>
+        </div>
+    </div>
+
+    <div class="flex justify-center gap-6 mt-10 mb-20">
+        <button onclick="prevSlide()" class="nav-btn"><i class="fas fa-chevron-left mr-2"></i> Précédent</button>
+        <button onclick="nextSlide()" class="nav-btn">Suivant <i class="fas fa-chevron-right ml-2"></i></button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+            currentSlide = n;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) showSlide(currentSlide - 1);
+        }
+
+        // Navigation au clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") nextSlide();
+            if (e.key === "ArrowLeft") prevSlide();
+        });
+    </script>
 </body>
 </html>
